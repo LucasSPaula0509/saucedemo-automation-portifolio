@@ -1,0 +1,24 @@
+# Build
+target/
+.mvn/wrapper/maven-wrapper.jar
+
+# Relatórios gerados
+allure-report/
+.allure/
+.lighthouseci/
+zap-report/
+
+# Node (Lighthouse local)
+node_modules/
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# SO
+.DS_Store
+Thumbs.db
