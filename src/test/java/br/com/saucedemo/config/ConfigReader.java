@@ -12,8 +12,8 @@ import java.util.Properties;
 import java.util.stream.Stream;
 
 /**
- * Lê as configurações do projeto respeitando a precedência: propriedade de sistema ({@code -Dchave})
- * → variável de ambiente ({@code CHAVE_COM_UNDERSCORE}) → {@code config.properties}.
+ * Lê as configurações do projeto respeitando a precedência: propriedade de sistema ({@code
+ * -Dchave}) → variável de ambiente ({@code CHAVE_COM_UNDERSCORE}) → {@code config.properties}.
  */
 public final class ConfigReader {
 
@@ -29,7 +29,9 @@ public final class ConfigReader {
 
   public static Optional<String> find(String key) {
     return Stream.of(
-            System.getProperty(key), System.getenv(toEnvName(key)), FILE_PROPERTIES.getProperty(key))
+            System.getProperty(key),
+            System.getenv(toEnvName(key)),
+            FILE_PROPERTIES.getProperty(key))
         .filter(value -> value != null && !value.isBlank())
         .map(String::trim)
         .findFirst();
@@ -48,7 +50,8 @@ public final class ConfigReader {
   }
 
   private static Properties loadFile() {
-    try (InputStream stream = ConfigReader.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
+    try (InputStream stream =
+        ConfigReader.class.getClassLoader().getResourceAsStream(CONFIG_FILE)) {
       if (stream == null) {
         throw new IllegalStateException(CONFIG_FILE + " não encontrado no classpath");
       }

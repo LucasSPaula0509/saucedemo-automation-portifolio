@@ -20,6 +20,7 @@ public class Hooks {
   public void startBrowser(Scenario scenario) {
     LOG.info("Iniciando cenário: {}", scenario.getName());
     DriverManager.start();
+    AllureEnvironment.writeOnce(DriverManager.get());
   }
 
   /** Screenshot do passo que falhou (ou de todos, com {@code screenshot.every.step=true}). */

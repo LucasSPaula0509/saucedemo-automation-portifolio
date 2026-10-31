@@ -145,10 +145,14 @@ public class ProductsSteps {
     softly.assertThat(actual).as("Quantidade de produtos exibidos").hasSameSizeAs(expectedRows);
     for (int i = 0; i < Math.min(actual.size(), expectedRows.size()); i++) {
       Map<String, String> row = expectedRows.get(i);
-      softly.assertThat(actual.get(i).name()).as("Produto na posição %d", i + 1)
+      softly
+          .assertThat(actual.get(i).name())
+          .as("Produto na posição %d", i + 1)
           .isEqualTo(row.get(NAME_COLUMN));
       if (checkPrices) {
-        softly.assertThat(actual.get(i).price()).as("Preço na posição %d", i + 1)
+        softly
+            .assertThat(actual.get(i).price())
+            .as("Preço na posição %d", i + 1)
             .isEqualTo(row.get(PRICE_COLUMN));
       }
     }
