@@ -8,7 +8,8 @@ import java.util.List;
  * Regra de cálculo do resumo do pedido: subtotal = soma dos itens; imposto = 8% do subtotal,
  * arredondado a 2 casas (HALF_UP); total = subtotal + imposto.
  */
-public record OrderTotals(List<BigDecimal> itemPrices, BigDecimal subtotal, BigDecimal tax, BigDecimal total) {
+public record OrderTotals(
+    List<BigDecimal> itemPrices, BigDecimal subtotal, BigDecimal tax, BigDecimal total) {
 
   public static final BigDecimal TAX_RATE = new BigDecimal("0.08");
 

@@ -65,7 +65,8 @@ public class CheckoutSteps {
     journey.withCheckoutInformationFilled(username, List.of(product));
   }
 
-  @Dado("que o usuário {string} preencheu os dados do checkout com os produtos {string} no carrinho")
+  @Dado(
+      "que o usuário {string} preencheu os dados do checkout com os produtos {string} no carrinho")
   public void userFilledCheckoutWithProducts(String username, String products) {
     journey.withCheckoutInformationFilled(username, splitProducts(products));
   }
@@ -146,11 +147,17 @@ public class CheckoutSteps {
           softly.assertThat(overviewPage.subtotal()).as("Subtotal exibido").isEqualTo(subtotal);
           softly.assertThat(overviewPage.tax()).as("Imposto exibido").isEqualTo(tax);
           softly.assertThat(overviewPage.total()).as("Total exibido").isEqualTo(total);
-          softly.assertThat(Money.parse(overviewPage.subtotal())).as("Subtotal pela regra")
+          softly
+              .assertThat(Money.parse(overviewPage.subtotal()))
+              .as("Subtotal pela regra")
               .isEqualByComparingTo(expectedByRule.subtotal());
-          softly.assertThat(Money.parse(overviewPage.tax())).as("Imposto pela regra de 8%")
+          softly
+              .assertThat(Money.parse(overviewPage.tax()))
+              .as("Imposto pela regra de 8%")
               .isEqualByComparingTo(expectedByRule.tax());
-          softly.assertThat(Money.parse(overviewPage.total())).as("Total pela regra")
+          softly
+              .assertThat(Money.parse(overviewPage.total()))
+              .as("Total pela regra")
               .isEqualByComparingTo(expectedByRule.total());
         });
   }

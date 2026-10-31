@@ -21,7 +21,9 @@ public final class Environment {
     return BrowserType.from(ConfigReader.get("browser"));
   }
 
-  /** Em CI (variável {@code CI=true}, definida pelo GitHub Actions) a execução é sempre headless. */
+  /**
+   * Em CI (variável {@code CI=true}, definida pelo GitHub Actions) a execução é sempre headless.
+   */
   public static boolean headless() {
     return ConfigReader.getBoolean("headless") || isCi();
   }
