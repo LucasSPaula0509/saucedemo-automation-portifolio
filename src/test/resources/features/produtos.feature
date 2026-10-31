@@ -88,7 +88,7 @@ Funcionalidade: Catálogo de produtos
     Quando ele aciona "Back to products"
     Então a página de produtos é exibida
 
-  @CT009_Produtos @regressivo @positivo @menu
+  @CT009_Produtos @regressivo @positivo @menu @defeito
   Cenário: Opções disponíveis no menu lateral
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele abre o menu lateral
