@@ -1,7 +1,9 @@
 package br.com.saucedemo.hooks;
 
+import br.com.saucedemo.config.Environment;
 import io.qameta.allure.listener.TestLifecycleListener;
 import io.qameta.allure.model.Label;
+import io.qameta.allure.model.Parameter;
 import io.qameta.allure.model.Status;
 import io.qameta.allure.model.StatusDetails;
 import io.qameta.allure.model.TestResult;
@@ -23,6 +25,8 @@ import java.util.Properties;
  *
  * <ul>
  *   <li>Label Feature a partir da tag da funcionalidade ({@code @login}, {@code @produtos}...).
+ *   <li>Parâmetro "Navegador" e {@code historyId} por navegador, para que a mesma execução em
+ *       Chrome e Firefox não apareça como retentativa no relatório consolidado do CI.
  *   <li>Cenários {@code @defeito} recebem o link de issue mapeado em {@code
  *       known-defects.properties}; quando falham, a mensagem ganha o prefixo {@code [Defeito
  *       conhecido DEF-xxx]}, usado pela categoria "Defeitos conhecidos" do {@code categories.json}.
@@ -55,6 +59,7 @@ public class AllureResultEnricher implements TestLifecycleListener {
         .filter(Objects::nonNull)
         .findFirst()
         .ifPresent(feature -> replaceFeature(result, feature));
+    separateByBrowser(result);
     if (tags.contains(DEFECT_TAG)) {
       markKnownDefect(result, defectId(tags));
     }
@@ -63,6 +68,12 @@ public class AllureResultEnricher implements TestLifecycleListener {
   private static void replaceFeature(TestResult result, String feature) {
     result.getLabels().removeIf(label -> FEATURE_LABEL.equals(label.getName()));
     result.getLabels().add(ResultsUtils.createFeatureLabel(feature));
+  }
+
+  private static void separateByBrowser(TestResult result) {
+    String browser = Environment.browser().name().toLowerCase();
+    result.getParameters().add(new Parameter().setName("Navegador").setValue(browser));
+    result.setHistoryId(result.getHistoryId() + ":" + browser);
   }
 
   private static Optional<String> defectId(List<String> tags) {

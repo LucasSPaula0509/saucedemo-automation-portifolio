@@ -120,26 +120,6 @@
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-toolchains-plugin</artifactId>
-        <version>${maven-toolchains-plugin.version}</version>
-        <executions>
-          <execution>
-            <goals>
-              <goal>toolchain</goal>
-            </goals>
-          </execution>
-        </executions>
-        <configuration>
-          <toolchains>
-            <jdk>
-              <version>[${java.version},)</version>
-            </jdk>
-          </toolchains>
-        </configuration>
-      </plugin>
-
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>${maven-compiler-plugin.version}</version>
       </plugin>
@@ -210,4 +190,40 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <!-- Usa o JDK 21 declarado em ~/.m2/toolchains.xml (quando existir) mesmo que o JAVA_HOME seja
+         outra versão. Sem o arquivo, o build usa o JDK do JAVA_HOME. -->
+    <profile>
+      <id>jdk-toolchain</id>
+      <activation>
+        <file>
+          <exists>${user.home}/.m2/toolchains.xml</exists>
+        </file>
+      </activation>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-toolchains-plugin</artifactId>
+            <version>${maven-toolchains-plugin.version}</version>
+            <executions>
+              <execution>
+                <goals>
+                  <goal>toolchain</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <toolchains>
+                <jdk>
+                  <version>[${java.version},)</version>
+                </jdk>
+              </toolchains>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+  </profiles>
 </project>
