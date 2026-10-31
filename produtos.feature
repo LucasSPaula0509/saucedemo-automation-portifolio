@@ -6,7 +6,7 @@ Funcionalidade: Catálogo de produtos
   Quero visualizar, ordenar e detalhar os produtos
   Para escolher o que desejo comprar
 
-  @smoke @positivo
+  @CT001_Produtos @regressivo @smoke @positivo
   Cenário: Exibição do catálogo após autenticação
     Dado que o usuário "standard_user" está autenticado
     Quando ele acessa a página de produtos
@@ -19,13 +19,13 @@ Funcionalidade: Catálogo de produtos
       | Sauce Labs Onesie                 | $7.99  |
       | Test.allTheThings() T-Shirt (Red) | $15.99 |
 
-  @positivo
+  @CT002_Produtos @regressivo @positivo
   Cenário: Ordenação padrão do catálogo
     Dado que o usuário "standard_user" está autenticado
     Quando ele acessa a página de produtos
     Então a ordenação "Name (A to Z)" está selecionada
 
-  @positivo @ordenacao
+  @CT003_Produtos @regressivo @positivo @ordenacao
   Cenário: Ordenação por nome de Z a A
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele ordena os produtos por "Name (Z to A)"
@@ -38,7 +38,7 @@ Funcionalidade: Catálogo de produtos
       | Sauce Labs Bike Light             |
       | Sauce Labs Backpack               |
 
-  @positivo @ordenacao
+  @CT004_Produtos @regressivo @positivo @ordenacao
   Cenário: Ordenação por menor preço
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele ordena os produtos por "Price (low to high)"
@@ -51,7 +51,7 @@ Funcionalidade: Catálogo de produtos
       | Sauce Labs Backpack               | $29.99 |
       | Sauce Labs Fleece Jacket          | $49.99 |
 
-  @positivo @ordenacao
+  @CT005_Produtos @regressivo @positivo @ordenacao
   Cenário: Ordenação por maior preço
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele ordena os produtos por "Price (high to low)"
@@ -64,13 +64,13 @@ Funcionalidade: Catálogo de produtos
       | Sauce Labs Bike Light             | $9.99  |
       | Sauce Labs Onesie                 | $7.99  |
 
-  @positivo @ordenacao
+  @CT006_Produtos @regressivo @positivo @ordenacao
   Cenário: Ordenação volta ao padrão ao retornar do detalhe do produto
     Dado que o usuário "standard_user" ordenou os produtos por "Price (low to high)"
     Quando ele abre o detalhe de um produto e volta para a lista com "Back to products"
     Então a ordenação "Name (A to Z)" está selecionada
 
-  @positivo @detalhe
+  @CT007_Produtos @regressivo @positivo @detalhe
   Esquema do Cenário: Detalhe do produto exibe as mesmas informações do catálogo
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele abre o detalhe do produto "<produto>"
@@ -82,13 +82,13 @@ Funcionalidade: Catálogo de produtos
       | Sauce Labs Fleece Jacket | $49.99 |
       | Sauce Labs Onesie        | $7.99  |
 
-  @positivo @detalhe
+  @CT008_Produtos @regressivo @positivo @detalhe
   Cenário: Retorno do detalhe para a lista de produtos
     Dado que o usuário "standard_user" está no detalhe do produto "Sauce Labs Backpack"
     Quando ele aciona "Back to products"
     Então a página de produtos é exibida
 
-  @positivo @menu
+  @CT009_Produtos @regressivo @positivo @menu
   Cenário: Opções disponíveis no menu lateral
     Dado que o usuário "standard_user" está na página de produtos
     Quando ele abre o menu lateral
@@ -99,7 +99,7 @@ Funcionalidade: Catálogo de produtos
       | Logout          |
       | Reset App State |
 
-  @positivo @menu
+  @CT010_Produtos @regressivo @positivo @menu
   Cenário: Link "About" direciona para o site da Sauce Labs
     Dado que o usuário "standard_user" está com o menu lateral aberto
     Quando ele seleciona a opção "About"

@@ -6,13 +6,13 @@ Funcionalidade: Autenticação de usuários no Swag Labs
   Quero me autenticar com minhas credenciais
   Para acessar o catálogo de produtos e realizar compras
 
-  @smoke @positivo
+  @CT001_Login @regressivo @smoke @positivo
   Cenário: Login com credenciais válidas
     Dado que o usuário "standard_user" está na página de login
     Quando ele se autentica com a senha "secret_sauce"
     Então a página de produtos é exibida
 
-  @positivo
+  @CT002_Login @regressivo @positivo
   Esquema do Cenário: Login com perfis de usuário aceitos
     Dado que o usuário "<usuario>" está na página de login
     Quando ele se autentica com a senha "secret_sauce"
@@ -26,13 +26,13 @@ Funcionalidade: Autenticação de usuários no Swag Labs
       | error_user              |
       | visual_user             |
 
-  @negativo
+  @CT003_Login @regressivo @negativo
   Cenário: Login com usuário bloqueado
     Dado que o usuário "locked_out_user" está na página de login
     Quando ele se autentica com a senha "secret_sauce"
     Então a mensagem "Epic sadface: Sorry, this user has been locked out." é exibida
 
-  @negativo
+  @CT004_Login @regressivo @negativo
   Esquema do Cenário: Login com credenciais inválidas
     Dado que o usuário "<usuario>" está na página de login
     Quando ele se autentica com a senha "<senha>"
@@ -45,7 +45,7 @@ Funcionalidade: Autenticação de usuários no Swag Labs
       | STANDARD_USER | secret_sauce | usuário com caixa diferente   |
       | standard_user | SECRET_SAUCE | senha com caixa diferente     |
 
-  @negativo @validacao
+  @CT005_Login @regressivo @negativo @validacao
   Esquema do Cenário: Login com campos obrigatórios não preenchidos
     Dado que o visitante está na página de login
     Quando ele tenta se autenticar com usuário "<usuario>" e senha "<senha>"
@@ -57,13 +57,13 @@ Funcionalidade: Autenticação de usuários no Swag Labs
       |               | secret_sauce | Epic sadface: Username is required  |
       | standard_user |              | Epic sadface: Password is required  |
 
-  @seguranca
+  @CT006_Login @regressivo @seguranca
   Cenário: Campo de senha mascara os caracteres digitados
     Dado que o visitante está na página de login
     Quando ele digita a senha "secret_sauce"
     Então o conteúdo do campo de senha é exibido mascarado
 
-  @seguranca
+  @CT007_Login @regressivo @seguranca
   Esquema do Cenário: Acesso direto a páginas internas sem autenticação
     Dado que o visitante não está autenticado
     Quando ele acessa diretamente a página "<pagina>"
@@ -75,13 +75,13 @@ Funcionalidade: Autenticação de usuários no Swag Labs
       | /cart.html                 |
       | /checkout-step-one.html    |
 
-  @positivo
+  @CT008_Login @regressivo @positivo
   Cenário: Logout pelo menu lateral
     Dado que o usuário "standard_user" está autenticado
     Quando ele seleciona a opção "Logout" no menu lateral
     Então a página de login é exibida
 
-  @seguranca
+  @CT009_Login @regressivo @seguranca
   Cenário: Sessão encerrada após logout impede retorno à área logada
     Dado que o usuário "standard_user" encerrou a sessão pelo menu lateral
     Quando ele tenta retornar à página de produtos pelo histórico do navegador

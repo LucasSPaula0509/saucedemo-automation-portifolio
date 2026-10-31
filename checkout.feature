@@ -6,13 +6,13 @@ Funcionalidade: Finalização da compra
   Quero informar meus dados e confirmar o pedido
   Para concluir a compra dos produtos do carrinho
 
-  @smoke @positivo
+  @CT001_Checkout @regressivo @smoke @positivo
   Cenário: Iniciar o checkout a partir do carrinho
     Dado que o carrinho do usuário "standard_user" contém o produto "Sauce Labs Backpack"
     Quando ele aciona "Checkout" no carrinho
     Então o formulário "Checkout: Your Information" é exibido
 
-  @negativo @validacao
+  @CT002_Checkout @regressivo @negativo @validacao
   Esquema do Cenário: Validação dos campos obrigatórios do checkout
     Dado que o usuário "standard_user" está no formulário de informações do checkout
     Quando ele continua informando nome "<nome>", sobrenome "<sobrenome>" e CEP "<cep>"
@@ -25,13 +25,13 @@ Funcionalidade: Finalização da compra
       | Ana  |           | 06500000 | Error: Last Name is required    |
       | Ana  | Teste     |          | Error: Postal Code is required  |
 
-  @positivo
+  @CT003_Checkout @regressivo @positivo
   Cenário: Avançar para o resumo com dados válidos
     Dado que o usuário "standard_user" está no formulário de informações do checkout
     Quando ele continua informando nome "Ana", sobrenome "Teste" e CEP "06500000"
     Então o resumo "Checkout: Overview" é exibido
 
-  @positivo
+  @CT004_Checkout @regressivo @positivo
   Cenário: Resumo exibe forma de pagamento e entrega
     Dado que o usuário "standard_user" preencheu os dados do checkout com o produto "Sauce Labs Backpack" no carrinho
     Quando ele visualiza o resumo do pedido
@@ -40,7 +40,7 @@ Funcionalidade: Finalização da compra
       | Payment Information   | SauceCard #31337              |
       | Shipping Information  | Free Pony Express Delivery!   |
 
-  @smoke @positivo @calculo
+  @CT005_Checkout @regressivo @smoke @positivo @calculo
   Esquema do Cenário: Cálculo de subtotal, imposto de 8% e total
     Dado que o usuário "standard_user" preencheu os dados do checkout com os produtos "<produtos>" no carrinho
     Quando ele visualiza o resumo do pedido
@@ -51,31 +51,31 @@ Funcionalidade: Finalização da compra
       | Sauce Labs Bike Light                    | $9.99    | $0.80   | $10.79 |
       | Sauce Labs Backpack, Sauce Labs Onesie   | $37.98   | $3.04   | $41.02 |
 
-  @smoke @positivo
+  @CT006_Checkout @regressivo @smoke @positivo
   Cenário: Concluir a compra
     Dado que o usuário "standard_user" está no resumo do pedido
     Quando ele aciona "Finish"
     Então a mensagem "Thank you for your order!" é exibida
 
-  @positivo
+  @CT007_Checkout @regressivo @positivo
   Cenário: Carrinho é esvaziado após concluir a compra
     Dado que o usuário "standard_user" está no resumo do pedido
     Quando ele aciona "Finish"
     Então o contador do carrinho não é exibido
 
-  @positivo
+  @CT008_Checkout @regressivo @positivo
   Cenário: Voltar para os produtos após concluir a compra
     Dado que o usuário "standard_user" está na página "Checkout: Complete!"
     Quando ele aciona "Back Home"
     Então a página de produtos é exibida
 
-  @positivo @cancelamento
+  @CT009_Checkout @regressivo @positivo @cancelamento
   Cenário: Cancelar no formulário de informações retorna ao carrinho
     Dado que o usuário "standard_user" está no formulário de informações do checkout
     Quando ele aciona "Cancel"
     Então o carrinho é exibido
 
-  @positivo @cancelamento
+  @CT010_Checkout @regressivo @positivo @cancelamento
   Cenário: Cancelar no resumo retorna aos produtos mantendo o carrinho
     Dado que o usuário "standard_user" está no resumo do pedido com o produto "Sauce Labs Bike Light"
     Quando ele aciona "Cancel"
@@ -83,7 +83,7 @@ Funcionalidade: Finalização da compra
 
   # DEFEITO OBSERVADO em 30/10/2026: o site permite iniciar o checkout
   # com o carrinho vazio (redireciona para checkout-step-one.html).
-  @negativo @defeito
+  @CT011_Checkout @regressivo @negativo @defeito
   Cenário: Checkout bloqueado com carrinho vazio
     Dado que o usuário "standard_user" está no carrinho vazio
     Quando ele aciona "Checkout"
