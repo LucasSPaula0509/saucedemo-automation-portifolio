@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UncheckedIOException;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -72,7 +73,10 @@ public class AllureResultEnricher implements TestLifecycleListener {
 
   private static void separateByBrowser(TestResult result) {
     String browser = Environment.browser().name().toLowerCase();
-    result.getParameters().add(new Parameter().setName("Navegador").setValue(browser));
+    // A lista de parâmetros de cenários sem exemplos é imutável: cria uma nova.
+    List<Parameter> parameters = new ArrayList<>(result.getParameters());
+    parameters.add(new Parameter().setName("Navegador").setValue(browser));
+    result.setParameters(parameters);
     result.setHistoryId(result.getHistoryId() + ":" + browser);
   }
 
