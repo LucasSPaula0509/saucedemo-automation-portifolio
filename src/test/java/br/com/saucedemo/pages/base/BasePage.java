@@ -13,6 +13,7 @@ import br.com.saucedemo.driver.DriverManager;
 import java.net.URI;
 import java.util.List;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -95,6 +96,19 @@ public abstract class BasePage {
   protected String urlAfterLeaving(String domain) {
     await().until(not(urlContains(domain)));
     return currentUrl();
+  }
+
+  /**
+   * Executa o script até ele retornar um valor não nulo (ex.: métrica que o navegador ainda não
+   * gerou).
+   */
+  protected Object scriptResultWhenAvailable(String script) {
+    return await().until(driver -> ((JavascriptExecutor) driver).executeScript(script));
+  }
+
+  /** Script assíncrono: o resultado é o valor passado ao callback {@code arguments[last]}. */
+  protected Object asyncScriptResult(String script) {
+    return ((JavascriptExecutor) driver()).executeAsyncScript(script);
   }
 
   private WebElement visible(By locator) {
