@@ -51,4 +51,9 @@ public final class Environment {
   public static boolean screenshotEveryStep() {
     return ConfigReader.getBoolean("screenshot.every.step");
   }
+
+  /** {@code true}: achados das verificações passivas de segurança reprovam o cenário. */
+  public static boolean failOnSecurityFindings() {
+    return ConfigReader.getBoolean("security.fail.on.findings");
+  }
 }
