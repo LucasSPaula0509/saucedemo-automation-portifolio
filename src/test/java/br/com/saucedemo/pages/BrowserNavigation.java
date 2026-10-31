@@ -19,6 +19,11 @@ public class BrowserNavigation extends BasePage {
     driver().navigate().back();
   }
 
+  /** Acessa a raiz do site pelo protocolo HTTP (sem TLS), para verificar o redirecionamento. */
+  public void openOverHttp() {
+    driver().get("http://" + URI.create(Environment.baseUrl()).getAuthority() + "/");
+  }
+
   public String url() {
     return currentUrl();
   }
