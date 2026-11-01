@@ -1,0 +1,1 @@
+Campo de senha com autocomplete ausente (esperado: off, new-password, current-password)

@@ -1,0 +1,22 @@
+accept-ranges: bytes
+access-control-allow-origin: *
+age: 416
+cache-control: max-age=600
+content-encoding: gzip
+content-length: 725
+content-type: text/html; charset=utf-8
+date: Sun, 01 Nov 2026 17:42:17 GMT
+etag: W/"6ae26d2a-545"
+expires: Wed, 28 Oct 2026 21:57:31 GMT
+last-modified: Wed, 28 Oct 2026 21:46:18 GMT
+server: GitHub.com
+vary: Accept-Encoding
+via: 1.1 varnish
+x-cache: HIT
+x-cache-hits: 3
+x-fastly-request-id: dc49c2c471a1d1e324d3d79a1f632ca7293d8ad1
+x-github-edge-region: westus3
+x-github-request-id: 4000:33D5B7:249E00:290F86:6AE26DFE
+x-proxy-cache: HIT
+x-served-by: cache-pao-kpao1770080-PAO
+x-timer: S1793554937.476633,VS0,VE0
