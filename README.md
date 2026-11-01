@@ -1,11 +1,11 @@
 # Swag Labs — Automação de testes front-end
 
-[![Testes E2E](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/tests.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/tests.yml)
-[![Lint](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/lint.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/lint.yml)
-[![Performance e Segurança](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/security-performance.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portifolio/actions/workflows/security-performance.yml)
-[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://lucasspaula0509.github.io/saucedemo-automation-portifolio/)
+[![Testes E2E](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/tests.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/tests.yml)
+[![Lint](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/lint.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/lint.yml)
+[![Performance e Segurança](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/security-performance.yml/badge.svg)](https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java/actions/workflows/security-performance.yml)
+[![Allure Report](https://img.shields.io/badge/Allure-Report-orange)](https://lucasspaula0509.github.io/saucedemo-automation-portfolio_java/)
 
-**Allure Report da última execução da `main`:** <https://lucasspaula0509.github.io/saucedemo-automation-portifolio/>
+**Allure Report da última execução da `main`:** <https://lucasspaula0509.github.io/saucedemo-automation-portfolio_java/>
 
 ---
 
@@ -51,8 +51,8 @@ Os cenários usam esta stack:
 | **Git** | clonar o repositório | <https://git-scm.com/> |
 
 ```bash
-git clone https://github.com/LucasSPaula0509/saucedemo-automation-portifolio.git
-cd saucedemo-automation-portifolio
+git clone https://github.com/LucasSPaula0509/saucedemo-automation-portfolio_java.git
+cd saucedemo-automation-portfolio_java
 java -version     # deve mostrar 21
 ./mvnw -v         # na primeira vez, baixa o Maven automaticamente
 ```
@@ -274,7 +274,7 @@ defeitos conhecidos (@defeito) ────────┘
 | **smoke** | `@smoke and not @defeito` no Chrome headless. Se falhar, a regressão nem começa. |
 | **regression** | `not @defeito and not @performance` em matriz **Chrome** e **Firefox** |
 | **known-defects** | só `@defeito`, com `continue-on-error`. Deve ficar vermelho enquanto os defeitos existirem; quando ficar verde, o defeito foi corrigido. |
-| **report** | junta os `allure-results` de todos os jobs, recupera o histórico (tendência) do relatório anterior, gera o Allure e publica em <https://lucasspaula0509.github.io/saucedemo-automation-portifolio/>. Em PR, o relatório fica só como artifact. |
+| **report** | junta os `allure-results` de todos os jobs, recupera o histórico (tendência) do relatório anterior, gera o Allure e publica em <https://lucasspaula0509.github.io/saucedemo-automation-portfolio_java/>. Em PR, o relatório fica só como artifact. |
 
 - **Execução manual:** em *Actions → Testes E2E → Run workflow*, escolha o `browser` e as `tags`.
 - **Artifacts** (sempre enviados, mesmo com falha): `allure-results-*`, `evidencias-*` (`cucumber.html` e `surefire-reports`) e `allure-report`.

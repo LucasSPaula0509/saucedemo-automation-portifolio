@@ -131,7 +131,7 @@ jobs:
       contents: write
     env:
       PUBLISH: ${{ github.event_name != 'pull_request' && github.ref == 'refs/heads/main' }}
-      REPORT_URL: https://lucasspaula0509.github.io/saucedemo-automation-portifolio/
+      REPORT_URL: https://lucasspaula0509.github.io/saucedemo-automation-portfolio_java/
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-java@v6
